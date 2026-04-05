@@ -79,8 +79,8 @@ export default function Mocks() {
     <div className="max-w-6xl mx-auto space-y-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Mock Exams 📝</h1>
-          <p className="text-gray-500">Practice makes perfect. Upload your answers and get feedback.</p>
+          <h1 className="text-3xl font-bold text-slate-800">Mock Exams 📝</h1>
+          <p className="text-slate-500">Practice makes perfect. Upload your answers and get feedback.</p>
         </div>
       </div>
 
@@ -95,27 +95,27 @@ export default function Mocks() {
               <motion.div
                 key={mock.id}
                 layout
-                className="bg-white p-6 rounded-3xl shadow-xl shadow-pink-100 border border-pink-50 hover:shadow-2xl transition-all duration-300"
+                className="bg-white p-6 rounded-3xl shadow-xl shadow-primary-100/20 border border-primary-50 hover:shadow-2xl transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row justify-between gap-6">
                   <div className="flex-1 space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-3 bg-pink-100 text-pink-600 rounded-2xl">
+                      <div className="p-3 bg-primary-100 text-primary-600 rounded-2xl">
                         <FileText size={24} />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-800">{mock.title}</h3>
-                        <p className="text-sm text-gray-400 font-medium">{format(new Date(mock.date), 'MMMM do, yyyy')}</p>
+                        <h3 className="text-xl font-bold text-slate-800">{mock.title}</h3>
+                        <p className="text-sm text-slate-400 font-medium">{format(new Date(mock.date), 'MMMM do, yyyy')}</p>
                       </div>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">{mock.description}</p>
+                    <p className="text-slate-600 leading-relaxed">{mock.description}</p>
                     
                     <div className="flex flex-wrap gap-3">
                       <a
                         href={mock.pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-pink-50 text-pink-600 rounded-xl hover:bg-pink-100 transition-colors text-sm font-bold"
+                        className="flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-600 rounded-xl hover:bg-primary-100 transition-colors text-sm font-bold"
                       >
                         <ExternalLink size={16} />
                         View Paper
@@ -127,7 +127,7 @@ export default function Mocks() {
                             setSelectedMock(mock);
                             setShowSubmitModal(true);
                           }}
-                          className="flex items-center gap-2 px-4 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition-colors text-sm font-bold shadow-lg shadow-pink-100"
+                          className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-colors text-sm font-bold shadow-lg shadow-primary-100"
                         >
                           <Upload size={16} />
                           Submit Answers
@@ -165,7 +165,7 @@ export default function Mocks() {
                         <div className="space-y-2">
                           {leaderboard.rankings.slice(0, 3).map((rank, i) => (
                             <div key={i} className="flex justify-between items-center text-sm">
-                              <span className="text-gray-600 font-medium truncate max-w-[120px]">{rank.studentName}</span>
+                              <span className="text-slate-600 font-medium truncate max-w-[120px]">{rank.studentName}</span>
                               <span className="font-bold text-yellow-700">{rank.score}</span>
                             </div>
                           ))}
@@ -180,13 +180,13 @@ export default function Mocks() {
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
-                    className="mt-6 p-6 bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden"
+                    className="mt-6 p-6 bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden"
                   >
-                    <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <Sparkles size={18} className="text-pink-400" />
+                    <h4 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                      <Sparkles size={18} className="text-primary-400" />
                       Review Feedback
                     </h4>
-                    <div className="prose prose-pink prose-sm max-w-none text-gray-600">
+                    <div className="prose prose-primary prose-sm max-w-none text-slate-600">
                       <ReactMarkdown>{submission.feedback}</ReactMarkdown>
                     </div>
                   </motion.div>
@@ -198,20 +198,20 @@ export default function Mocks() {
 
         {/* Sidebar Info */}
         <div className="space-y-6">
-          <div className="bg-white p-6 rounded-3xl shadow-xl shadow-pink-100 border border-pink-50">
-            <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-              <Clock className="text-pink-500" size={24} />
+          <div className="bg-white p-6 rounded-3xl shadow-xl shadow-primary-100/20 border border-primary-50">
+            <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <Clock className="text-primary-500" size={24} />
               Upcoming Mocks
             </h2>
-            <p className="text-sm text-gray-500 leading-relaxed">
+            <p className="text-sm text-slate-500 leading-relaxed">
               New mock papers are uploaded one week before every exam. Stay tuned and keep practicing!
             </p>
           </div>
 
-          <div className="bg-pink-500 p-6 rounded-3xl shadow-xl shadow-pink-200 text-white">
+          <div className="bg-primary-500 p-6 rounded-3xl shadow-xl shadow-primary-200 text-white">
             <Trophy className="mb-4 opacity-50" size={48} />
             <h2 className="text-xl font-bold mb-2">Leaderboard System</h2>
-            <p className="text-pink-100 text-sm leading-relaxed">
+            <p className="text-primary-100 text-sm leading-relaxed">
               Compete with your classmates! Top scores are featured on the leaderboard after papers are checked.
             </p>
           </div>
@@ -229,25 +229,25 @@ export default function Mocks() {
               className="bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl"
             >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-800">Submit Answers</h2>
+                <h2 className="text-2xl font-bold text-slate-800">Submit Answers</h2>
                 <button onClick={() => setShowSubmitModal(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-                  <X size={20} className="text-gray-400" />
+                  <X size={20} className="text-slate-400" />
                 </button>
               </div>
 
               <div className="space-y-4">
-                <div className="p-4 bg-pink-50 rounded-2xl mb-4">
-                  <p className="text-sm text-pink-600 font-bold">Mock: {selectedMock?.title}</p>
+                <div className="p-4 bg-primary-50 rounded-2xl mb-4">
+                  <p className="text-sm text-primary-600 font-bold">Mock: {selectedMock?.title}</p>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-700 ml-1">Answer Script Link (Google Drive/PDF)</label>
+                  <label className="text-sm font-bold text-slate-700 ml-1">Answer Script Link (Google Drive/PDF)</label>
                   <div className="relative">
-                    <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                    <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                     <input
                       type="url"
                       value={pdfUrl}
                       onChange={(e) => setPdfUrl(e.target.value)}
-                      className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all"
+                      className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all"
                       placeholder="https://drive.google.com/..."
                       required
                     />
@@ -270,7 +270,7 @@ export default function Mocks() {
                 <button
                   onClick={handleSubmit}
                   disabled={loading || !pdfUrl}
-                  className="w-full py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl shadow-lg shadow-pink-200 transition-all mt-4 flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-200 transition-all mt-4 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {loading ? 'Submitting...' : (
                     <>

@@ -105,13 +105,13 @@ export default function Admin() {
     <div className="max-w-6xl mx-auto space-y-8 pb-20">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Admin Portal 👑</h1>
-          <p className="text-gray-500">Manage users, mocks, and community requests.</p>
+          <h1 className="text-3xl font-bold text-slate-800">Admin Portal 👑</h1>
+          <p className="text-slate-500">Manage users, mocks, and community requests.</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 bg-white p-2 rounded-2xl shadow-sm border border-pink-100 overflow-x-auto no-scrollbar">
+      <div className="flex gap-2 bg-white p-2 rounded-2xl shadow-sm border border-primary-100 overflow-x-auto no-scrollbar">
         {[
           { id: 'users', icon: Users, label: 'Users' },
           { id: 'mocks', icon: BookOpen, label: 'Mocks' },
@@ -123,7 +123,7 @@ export default function Admin() {
             onClick={() => setActiveTab(tab.id as any)}
             className={cn(
               "flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all whitespace-nowrap",
-              activeTab === tab.id ? "bg-pink-500 text-white shadow-lg shadow-pink-200" : "text-gray-500 hover:bg-pink-50"
+              activeTab === tab.id ? "bg-primary-500 text-white shadow-lg shadow-primary-200" : "text-slate-500 hover:bg-primary-50"
             )}
           >
             <tab.icon size={20} />
@@ -133,29 +133,29 @@ export default function Admin() {
       </div>
 
       {/* Content */}
-      <div className="bg-white rounded-3xl shadow-xl shadow-pink-100 border border-pink-50 p-8">
+      <div className="bg-white rounded-3xl shadow-xl shadow-primary-100/20 border border-primary-50 p-8">
         {activeTab === 'users' && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">User Management</h2>
+            <h2 className="text-2xl font-bold text-slate-800 mb-6">User Management</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="text-gray-400 text-sm font-bold uppercase tracking-wider border-b border-pink-50">
+                  <tr className="text-slate-400 text-sm font-bold uppercase tracking-wider border-b border-primary-50">
                     <th className="pb-4 pl-4">User</th>
                     <th className="pb-4">Role</th>
                     <th className="pb-4">Status</th>
                     <th className="pb-4 text-right pr-4">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-pink-50">
+                <tbody className="divide-y divide-primary-50">
                   {users.map((user) => (
-                    <tr key={user.uid} className="group hover:bg-pink-50/50 transition-colors">
+                    <tr key={user.uid} className="group hover:bg-primary-50/50 transition-colors">
                       <td className="py-4 pl-4">
                         <div className="flex items-center gap-3">
                           <img src={user.avatar} className="w-10 h-10 rounded-full" alt="" />
                           <div>
-                            <div className="font-bold text-gray-800">{user.name}</div>
-                            <div className="text-xs text-gray-400">{user.email}</div>
+                            <div className="font-bold text-slate-800">{user.name}</div>
+                            <div className="text-xs text-slate-400">{user.email}</div>
                           </div>
                         </div>
                       </td>
@@ -201,37 +201,37 @@ export default function Admin() {
         {activeTab === 'mocks' && (
           <div className="space-y-8">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-gray-800">Mock Papers</h2>
-              <button onClick={() => setActiveTab('mocks')} className="p-3 bg-pink-500 text-white rounded-2xl shadow-lg shadow-pink-200">
+              <h2 className="text-2xl font-bold text-slate-800">Mock Papers</h2>
+              <button onClick={() => setActiveTab('mocks')} className="p-3 bg-primary-500 text-white rounded-2xl shadow-lg shadow-primary-200">
                 <Plus size={24} />
               </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 bg-pink-50/50 rounded-3xl border border-pink-100 space-y-4">
-                <h3 className="font-bold text-gray-800">Create New Mock</h3>
+              <div className="p-6 bg-primary-50/50 rounded-3xl border border-primary-100 space-y-4">
+                <h3 className="font-bold text-slate-800">Create New Mock</h3>
                 <input
                   type="text"
                   placeholder="Mock Title"
                   value={newMock.title}
                   onChange={(e) => setNewMock({ ...newMock, title: e.target.value })}
-                  className="w-full px-4 py-3 bg-white border border-pink-100 rounded-2xl outline-none"
+                  className="w-full px-4 py-3 bg-white border border-primary-100 rounded-2xl outline-none"
                 />
                 <input
                   type="date"
                   value={newMock.date}
                   onChange={(e) => setNewMock({ ...newMock, date: e.target.value })}
-                  className="w-full px-4 py-3 bg-white border border-pink-100 rounded-2xl outline-none"
+                  className="w-full px-4 py-3 bg-white border border-primary-100 rounded-2xl outline-none"
                 />
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-700 ml-1">Mock Paper Link (Google Drive/PDF)</label>
+                  <label className="text-sm font-bold text-slate-700 ml-1">Mock Paper Link (Google Drive/PDF)</label>
                   <div className="relative">
-                    <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                    <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                     <input
                       type="url"
                       value={newMock.pdfUrl}
                       onChange={(e) => setNewMock({ ...newMock, pdfUrl: e.target.value })}
-                      className="w-full pl-12 pr-4 py-4 bg-white border border-pink-100 rounded-2xl outline-none focus:border-pink-300 transition-all"
+                      className="w-full pl-12 pr-4 py-4 bg-white border border-primary-100 rounded-2xl outline-none focus:border-primary-300 transition-all"
                       placeholder="https://drive.google.com/..."
                       required
                     />
@@ -241,12 +241,12 @@ export default function Admin() {
                   placeholder="Description"
                   value={newMock.description}
                   onChange={(e) => setNewMock({ ...newMock, description: e.target.value })}
-                  className="w-full px-4 py-3 bg-white border border-pink-100 rounded-2xl outline-none h-24"
+                  className="w-full px-4 py-3 bg-white border border-primary-100 rounded-2xl outline-none h-24"
                 />
                 <button 
                   onClick={handleAddMock} 
                   disabled={!newMock.pdfUrl || !newMock.title}
-                  className="w-full py-4 bg-pink-500 text-white font-bold rounded-2xl shadow-lg shadow-pink-200 disabled:opacity-50"
+                  className="w-full py-4 bg-primary-500 text-white font-bold rounded-2xl shadow-lg shadow-primary-200 disabled:opacity-50"
                 >
                   Upload Mock
                 </button>
@@ -254,10 +254,10 @@ export default function Admin() {
 
               <div className="space-y-4">
                 {mocks.map(mock => (
-                  <div key={mock.id} className="p-4 bg-white border border-pink-100 rounded-2xl flex justify-between items-center">
+                  <div key={mock.id} className="p-4 bg-white border border-primary-100 rounded-2xl flex justify-between items-center">
                     <div>
-                      <div className="font-bold text-gray-800">{mock.title}</div>
-                      <div className="text-xs text-gray-400">{mock.date}</div>
+                      <div className="font-bold text-slate-800">{mock.title}</div>
+                      <div className="text-xs text-slate-400">{mock.date}</div>
                     </div>
                     <div className="flex gap-2">
                       <button onClick={() => handleRefreshLeaderboard(mock.id)} className="p-2 text-yellow-600 hover:bg-yellow-50 rounded-xl" title="Refresh Leaderboard">
@@ -276,28 +276,28 @@ export default function Admin() {
 
         {activeTab === 'submissions' && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-800">Submissions to Review</h2>
+            <h2 className="text-2xl font-bold text-slate-800">Submissions to Review</h2>
             <div className="grid grid-cols-1 gap-4">
               {submissions.map(sub => (
-                <div key={sub.id} className="p-6 bg-white border border-pink-100 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div key={sub.id} className="p-6 bg-white border border-primary-100 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-pink-50 text-pink-500 rounded-2xl">
+                    <div className="p-3 bg-primary-50 text-primary-500 rounded-2xl">
                       <FileCheck size={24} />
                     </div>
                     <div>
-                      <div className="font-bold text-gray-800">{sub.studentName}</div>
-                      <div className="text-xs text-gray-400">Mock ID: {sub.mockId} • {format(new Date(sub.submittedAt), 'MMM d, h:mm a')}</div>
+                      <div className="font-bold text-slate-800">{sub.studentName}</div>
+                      <div className="text-xs text-slate-400">Mock ID: {sub.mockId} • {format(new Date(sub.submittedAt), 'MMM d, h:mm a')}</div>
                     </div>
                   </div>
                   <div className="flex gap-3 w-full md:w-auto">
-                    <a href={sub.pdfUrl} target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none px-4 py-2 bg-gray-100 text-gray-600 rounded-xl font-bold text-sm text-center">
+                    <a href={sub.pdfUrl} target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none px-4 py-2 bg-slate-100 text-slate-600 rounded-xl font-bold text-sm text-center">
                       View PDF
                     </a>
                     <button
                       onClick={() => setCheckingSubmission(sub)}
                       className={cn(
                         "flex-1 md:flex-none px-4 py-2 rounded-xl font-bold text-sm",
-                        sub.status === 'checked' ? "bg-green-100 text-green-600" : "bg-pink-500 text-white shadow-lg shadow-pink-200"
+                        sub.status === 'checked' ? "bg-green-100 text-green-600" : "bg-primary-500 text-white shadow-lg shadow-primary-200"
                       )}
                     >
                       {sub.status === 'checked' ? 'Edit Review' : 'Check Paper'}
@@ -311,22 +311,22 @@ export default function Admin() {
 
         {activeTab === 'resets' && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-800">Password Reset Requests</h2>
+            <h2 className="text-2xl font-bold text-slate-800">Password Reset Requests</h2>
             <div className="grid grid-cols-1 gap-4">
               {resets.map(req => {
                 const isValid = isRequestValid(req.timestamp);
                 return (
                   <div key={req.id} className={cn(
                     "p-6 rounded-3xl border flex justify-between items-center",
-                    !isValid ? "bg-gray-50 border-gray-100 opacity-60" : "bg-white border-pink-100"
+                    !isValid ? "bg-slate-50 border-slate-100 opacity-60" : "bg-white border-primary-100"
                   )}>
                     <div className="flex items-center gap-4">
-                      <div className={cn("p-3 rounded-2xl", isValid ? "bg-pink-50 text-pink-500" : "bg-gray-200 text-gray-400")}>
+                      <div className={cn("p-3 rounded-2xl", isValid ? "bg-primary-50 text-primary-500" : "bg-slate-200 text-slate-400")}>
                         <Clock size={24} />
                       </div>
                       <div>
-                        <div className="font-bold text-gray-800">{req.userName || req.userId}</div>
-                        <div className="text-xs text-gray-400">
+                        <div className="font-bold text-slate-800">{req.userName || req.userId}</div>
+                        <div className="text-xs text-slate-400">
                           Requested: {format(new Date(req.timestamp), 'h:mm:ss a')} 
                           {!isValid && <span className="text-red-400 ml-2 font-bold">(EXPIRED)</span>}
                         </div>
@@ -371,12 +371,12 @@ export default function Admin() {
               <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Trash2 size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Are you sure?</h3>
-              <p className="text-gray-500 mb-8">This action cannot be undone. This {deleteConfirm.type} will be permanently removed.</p>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Are you sure?</h3>
+              <p className="text-slate-500 mb-8">This action cannot be undone. This {deleteConfirm.type} will be permanently removed.</p>
               <div className="flex gap-3">
                 <button 
                   onClick={() => setDeleteConfirm(null)}
-                  className="flex-1 py-3 bg-gray-100 text-gray-600 font-bold rounded-2xl"
+                  className="flex-1 py-3 bg-slate-100 text-slate-600 font-bold rounded-2xl"
                 >
                   Cancel
                 </button>
@@ -403,44 +403,44 @@ export default function Admin() {
               className="bg-white w-full max-w-2xl rounded-3xl p-8 shadow-2xl"
             >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-800">Check Submission</h2>
+                <h2 className="text-2xl font-bold text-slate-800">Check Submission</h2>
                 <button onClick={() => setCheckingSubmission(null)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-                  <X size={20} className="text-gray-400" />
+                  <X size={20} className="text-slate-400" />
                 </button>
               </div>
 
               <div className="space-y-6">
-                <div className="flex justify-between items-center p-4 bg-pink-50 rounded-2xl">
-                  <div className="font-bold text-pink-600">{checkingSubmission.studentName}</div>
-                  <a href={checkingSubmission.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-pink-500 underline flex items-center gap-1">
+                <div className="flex justify-between items-center p-4 bg-primary-50 rounded-2xl">
+                  <div className="font-bold text-primary-600">{checkingSubmission.studentName}</div>
+                  <a href={checkingSubmission.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-primary-500 underline flex items-center gap-1">
                     Open PDF <ExternalLink size={14} />
                   </a>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-700">Score (%)</label>
+                  <label className="text-sm font-bold text-slate-700">Score (%)</label>
                   <input
                     type="number"
                     value={score}
                     onChange={(e) => setScore(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all"
+                    className="w-full px-4 py-3 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all"
                     min="0" max="100"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-700">Feedback (Markdown supported)</label>
+                  <label className="text-sm font-bold text-slate-700">Feedback (Markdown supported)</label>
                   <textarea
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all h-48 resize-none"
+                    className="w-full px-4 py-3 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all h-48 resize-none"
                     placeholder="Great work! Here are some points to improve..."
                   />
                 </div>
 
                 <button
                   onClick={handleCheckSubmission}
-                  className="w-full py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl shadow-lg shadow-pink-200 transition-all"
+                  className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-200 transition-all"
                 >
                   Submit Review
                 </button>

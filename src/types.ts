@@ -1,5 +1,7 @@
 export type UserRole = 'admin' | 'student';
 
+export type DashboardTheme = 'classic' | 'hacker' | 'cute-boy' | 'cute-girl' | 'cyberpunk' | 'minimalist';
+
 export interface UserProfile {
   uid: string;
   name: string;
@@ -7,6 +9,7 @@ export interface UserProfile {
   role: UserRole;
   avatar: string;
   approved: boolean;
+  theme?: DashboardTheme;
 }
 
 export interface Reminder {

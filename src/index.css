@@ -1,19 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-pink-50: #fff5f7;
-  --color-pink-100: #ffe4e9;
-  --color-pink-200: #ffc9d4;
-  --color-pink-300: #ffa1b3;
-  --color-pink-400: #ff6b8b;
-  --color-pink-500: #ff4d73;
-  --color-pink-600: #e6355c;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Quicksand", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  
+  --color-accent-50: #f0fdfa;
+  --color-accent-100: #ccfbf1;
+  --color-accent-200: #99f6e4;
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+
+  /* Re-mapping pink to primary for backward compatibility if needed, 
+     but I will update the components to use primary/accent */
+  --color-pink-50: var(--color-primary-50);
+  --color-pink-100: var(--color-primary-100);
+  --color-pink-200: var(--color-primary-200);
+  --color-pink-300: var(--color-primary-300);
+  --color-pink-400: var(--color-primary-400);
+  --color-pink-500: var(--color-primary-500);
+  --color-pink-600: var(--color-primary-600);
+}
+
+/* Theme Overrides */
+[data-theme="hacker"] {
+  --color-primary-500: #00ff41;
+  --color-primary-600: #008f11;
+  --color-primary-100: #003b00;
+  --color-primary-50: #001100;
+  --color-accent-500: #00ff41;
+  background-color: #0d0208 !important;
+  color: #00ff41 !important;
+  font-family: var(--font-mono) !important;
+}
+
+[data-theme="hacker"] .glass-card {
+  background: rgba(0, 20, 0, 0.8) !important;
+  border: 1px solid #00ff41 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2) !important;
+}
+
+[data-theme="hacker"] h1, [data-theme="hacker"] h2, [data-theme="hacker"] h3, [data-theme="hacker"] p, [data-theme="hacker"] span, [data-theme="hacker"] div {
+  color: #00ff41 !important;
+  font-family: var(--font-mono) !important;
+}
+
+[data-theme="cute-boy"] {
+  --color-primary-500: #60a5fa;
+  --color-primary-600: #3b82f6;
+  --color-primary-100: #dbeafe;
+  --color-primary-50: #eff6ff;
+  --color-accent-500: #34d399;
+}
+
+[data-theme="cute-girl"] {
+  --color-primary-500: #f472b6;
+  --color-primary-600: #db2777;
+  --color-primary-100: #fce7f3;
+  --color-primary-50: #fdf2f8;
+  --color-accent-500: #fbbf24;
+}
+
+[data-theme="cyberpunk"] {
+  --color-primary-500: #bc13fe;
+  --color-primary-600: #8b00ff;
+  --color-primary-100: #2d004d;
+  --color-primary-50: #1a0033;
+  --color-accent-500: #0ff;
+  background-color: #050505 !important;
+}
+
+[data-theme="cyberpunk"] .glass-card {
+  background: rgba(20, 0, 40, 0.8) !important;
+  border: 2px solid #bc13fe !important;
+  box-shadow: 0 0 20px rgba(188, 19, 254, 0.4) !important;
+}
+
+[data-theme="cyberpunk"] h1, [data-theme="cyberpunk"] h2, [data-theme="cyberpunk"] h3, [data-theme="cyberpunk"] p, [data-theme="cyberpunk"] span, [data-theme="cyberpunk"] div {
+  color: #0ff !important;
+}
+
+[data-theme="minimalist"] {
+  --color-primary-500: #334155;
+  --color-primary-600: #1e293b;
+  --color-primary-100: #f1f5f9;
+  --color-primary-50: #f8fafc;
+  --color-accent-500: #64748b;
+}
+
+[data-theme="minimalist"] .glass-card {
+  background: white !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: none !important;
 }
 
 @layer base {
   body {
-    @apply bg-pink-50 text-gray-800 font-sans antialiased;
+    @apply bg-primary-50 text-slate-800 font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
   }
 }
 
@@ -33,7 +130,7 @@
     @apply mb-4 leading-relaxed;
   }
   .prose h1, .prose h2, .prose h3 {
-    @apply font-bold text-gray-800 mt-6 mb-3;
+    @apply font-bold text-slate-800 mt-6 mb-3;
   }
   .prose ul {
     @apply list-disc pl-5 mb-4;
@@ -42,7 +139,11 @@
     @apply mb-1;
   }
   .prose code {
-    @apply bg-pink-100 text-pink-600 px-1.5 py-0.5 rounded font-mono text-sm;
+    @apply bg-primary-100 text-primary-600 px-1.5 py-0.5 rounded font-mono text-sm;
+  }
+  
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl shadow-primary-100/20;
   }
 }
 
@@ -53,6 +154,24 @@
   100% { transform: translateY(0px); }
 }
 
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.animate-heart-beat {
+  animation: heart-beat 1.5s ease-in-out infinite;
 }

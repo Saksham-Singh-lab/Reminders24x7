@@ -53,28 +53,28 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-primary-50 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md bg-white rounded-3xl shadow-2xl shadow-pink-200 p-8 relative overflow-hidden"
+        className="w-full max-w-md bg-white rounded-3xl shadow-2xl shadow-primary-200 p-8 relative overflow-hidden"
       >
         <div className="text-center mb-8">
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3 }}
-            className="inline-block p-4 bg-pink-100 rounded-2xl mb-4"
+            className="inline-block p-4 bg-primary-100 rounded-2xl mb-4"
           >
-            <Sparkles className="text-pink-500 fill-pink-500" size={32} />
+            <Sparkles className="text-primary-500 fill-primary-500" size={32} />
           </motion.div>
-          <h1 className="text-3xl font-bold text-gray-800">Join Us!</h1>
-          <p className="text-gray-500 mt-2">Create your account and start sharing ✨</p>
+          <h1 className="text-3xl font-bold text-slate-800">Join Us!</h1>
+          <p className="text-slate-500 mt-2">Create your account and start sharing ✨</p>
         </div>
 
         <form onSubmit={handleSignup} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">Select Avatar</label>
-            <div className="flex justify-between gap-2 p-2 bg-gray-50 rounded-2xl">
+            <label className="text-sm font-bold text-slate-700 ml-1">Select Avatar</label>
+            <div className="flex justify-between gap-2 p-2 bg-slate-50 rounded-2xl">
               {AVATARS.map((avatar) => (
                 <button
                   key={avatar}
@@ -82,7 +82,7 @@ export default function Signup() {
                   onClick={() => setSelectedAvatar(avatar)}
                   className={cn(
                     "w-12 h-12 rounded-full border-4 transition-all duration-200 overflow-hidden",
-                    selectedAvatar === avatar ? "border-pink-400 scale-110" : "border-transparent opacity-60 hover:opacity-100"
+                    selectedAvatar === avatar ? "border-primary-400 scale-110" : "border-transparent opacity-60 hover:opacity-100"
                   )}
                 >
                   <img src={avatar} alt="avatar" className="w-full h-full object-cover" />
@@ -92,14 +92,14 @@ export default function Signup() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">Full Name</label>
+            <label className="text-sm font-bold text-slate-700 ml-1">Full Name</label>
             <div className="relative">
-              <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
+                className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
                 placeholder="Saksham Singh"
                 required
               />
@@ -107,14 +107,14 @@ export default function Signup() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">Email Address</label>
+            <label className="text-sm font-bold text-slate-700 ml-1">Email Address</label>
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
+                className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
                 placeholder="hello@example.com"
                 required
               />
@@ -122,14 +122,14 @@ export default function Signup() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">Password</label>
+            <label className="text-sm font-bold text-slate-700 ml-1">Password</label>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
+                className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
                 placeholder="••••••••"
                 required
               />
@@ -149,7 +149,7 @@ export default function Signup() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl shadow-lg shadow-pink-200 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-200 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
           >
             {loading ? 'Creating Account...' : (
               <>
@@ -160,9 +160,9 @@ export default function Signup() {
           </button>
 
           <div className="text-center mt-6">
-            <p className="text-gray-500 text-sm">
+            <p className="text-slate-500 text-sm">
               Already have an account?{' '}
-              <Link to="/login" className="text-pink-500 font-bold hover:underline">
+              <Link to="/login" className="text-primary-500 font-bold hover:underline">
                 Login
               </Link>
             </p>

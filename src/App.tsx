@@ -9,6 +9,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Mocks from './pages/Mocks';
 import Admin from './pages/Admin';
+import Profile from './pages/Profile';
 import Layout from './components/Layout';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -67,13 +68,13 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center bg-pink-50">
+      <div className="flex h-screen items-center justify-center bg-primary-50">
         <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
           className="text-4xl"
         >
-          🌸
+          ✨
         </motion.div>
       </div>
     );
@@ -92,6 +93,7 @@ export default function App() {
             <Route element={user ? <Layout /> : <Navigate to="/login" />}>
               <Route path="/" element={<Dashboard />} />
               <Route path="/mocks" element={<Mocks />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/admin" element={isAdmin ? <Admin /> : <Navigate to="/" />} />
             </Route>
           </Routes>

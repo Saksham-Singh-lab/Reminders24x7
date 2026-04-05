@@ -54,38 +54,38 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-primary-50 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md bg-white rounded-3xl shadow-2xl shadow-pink-200 p-8 relative overflow-hidden"
+        className="w-full max-w-md bg-white rounded-3xl shadow-2xl shadow-primary-200 p-8 relative overflow-hidden"
       >
         {/* Decorative elements */}
-        <div className="absolute -top-10 -right-10 w-32 h-32 bg-pink-100 rounded-full blur-3xl opacity-50" />
-        <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-100 rounded-full blur-3xl opacity-50" />
+        <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary-100 rounded-full blur-3xl opacity-50" />
+        <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-primary-100 rounded-full blur-3xl opacity-50" />
 
         <div className="text-center mb-8 relative">
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3 }}
-            className="inline-block p-4 bg-pink-100 rounded-2xl mb-4"
+            className="inline-block p-4 bg-primary-100 rounded-2xl mb-4"
           >
-            <Heart className="text-pink-500 fill-pink-500" size={32} />
+            <Sparkles className="text-primary-500 fill-primary-500" size={32} />
           </motion.div>
-          <h1 className="text-3xl font-bold text-gray-800">Welcome Back!</h1>
-          <p className="text-gray-500 mt-2">Ready to check your reminders? ✨</p>
+          <h1 className="text-3xl font-bold text-slate-800">Welcome Back!</h1>
+          <p className="text-slate-500 mt-2">Ready to check your reminders? ✨</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6 relative">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">Email Address</label>
+            <label className="text-sm font-bold text-slate-700 ml-1">Email Address</label>
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
+                className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
                 placeholder="hello@example.com"
                 required
               />
@@ -93,14 +93,14 @@ export default function Login() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700 ml-1">Password</label>
+            <label className="text-sm font-bold text-slate-700 ml-1">Password</label>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-transparent focus:border-pink-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
+                className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent focus:border-primary-300 focus:bg-white rounded-2xl outline-none transition-all duration-200"
                 placeholder="••••••••"
                 required
               />
@@ -130,7 +130,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl shadow-lg shadow-pink-200 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-200 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
           >
             {loading ? 'Logging in...' : (
               <>
@@ -144,13 +144,13 @@ export default function Login() {
             <button
               type="button"
               onClick={handleForgotPassword}
-              className="text-sm font-bold text-pink-500 hover:text-pink-600 transition-colors"
+              className="text-sm font-bold text-primary-500 hover:text-primary-600 transition-colors"
             >
               Forgot Password?
             </button>
-            <p className="text-gray-500 text-sm">
+            <p className="text-slate-500 text-sm">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-pink-500 font-bold hover:underline">
+              <Link to="/signup" className="text-primary-500 font-bold hover:underline">
                 Sign Up
               </Link>
             </p>
