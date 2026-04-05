@@ -1,0 +1,120 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "student"] },
+        "avatar": { "type": "string" },
+        "approved": { "type": "boolean" }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "reminders": {
+      "title": "Reminder",
+      "description": "Daily reminders set by admins",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["date", "title"]
+    },
+    "mocks": {
+      "title": "Mock Exam",
+      "description": "Mock papers uploaded by admins",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "pdfUrl": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["title", "date", "pdfUrl"]
+    },
+    "submissions": {
+      "title": "Submission",
+      "description": "Student submissions for mock exams",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "mockId": { "type": "string" },
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "pdfUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "checked"] },
+        "score": { "type": "number" },
+        "feedback": { "type": "string" },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["mockId", "studentId", "pdfUrl"]
+    },
+    "leaderboard": {
+      "title": "Leaderboard",
+      "description": "Leaderboard for a specific mock exam",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "mockId": { "type": "string" },
+        "rankings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "studentName": { "type": "string" },
+              "score": { "type": "number" }
+            }
+          }
+        }
+      },
+      "required": ["mockId", "rankings"]
+    },
+    "passwordResetRequests": {
+      "title": "Password Reset Request",
+      "description": "Requests for password resets that need admin approval",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["pending", "approved", "denied"] }
+      },
+      "required": ["userId", "timestamp", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profiles"
+    },
+    "/reminders/{reminderId}": {
+      "schema": "reminders",
+      "description": "Daily reminders"
+    },
+    "/mocks/{mockId}": {
+      "schema": "mocks",
+      "description": "Mock exam papers"
+    },
+    "/submissions/{submissionId}": {
+      "schema": "submissions",
+      "description": "Student mock submissions"
+    },
+    "/leaderboards/{leaderboardId}": {
+      "schema": "leaderboard",
+      "description": "Mock exam leaderboards"
+    },
+    "/passwordResetRequests/{requestId}": {
+      "schema": "passwordResetRequests",
+      "description": "Admin-approved password reset requests"
+    }
+  }
+}
